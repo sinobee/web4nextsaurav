@@ -5,17 +5,20 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "amazon-cognito-identity-js": "^6.2.0",
     "aws-sdk": "^2.1354.0",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "jwk-to-pem": "^2.0.5",
+    "mocha": "^10.2.0",
     "mysql": "^2.18.1",
     "node-fetch": "^2.1.2",
     "request": "^2.88.2",

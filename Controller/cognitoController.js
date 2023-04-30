@@ -15,7 +15,12 @@ const userPool = new AmazonCognitoId.CognitoUserPool(poolData);
 
 async function signup(req,res){
     try{
-        const {name,email,password} = req.body;    
+        const {name,email,password} = req.body;   
+        if(name==""&& email=="" && password==""){
+            return res.status(400).json({
+                message:"all field is required"
+            })
+        } 
         const data = await signUpResult(name,email,password);
         if(data.userSub){
             insertUserInDatabase(name,email,data.userSub,req,res);

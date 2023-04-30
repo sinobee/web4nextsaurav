@@ -24,8 +24,8 @@ function postSingleRecord(req,res){
     const section  = req.body.section;
     const gen = req.body.gen;
      console.log(name,clas,rollno,section,gen)
-    if(rollno=="" && name=="" && clas=="" && section=="" && gen==""){
-        return res.status(200).json({
+    if(rollno=="" || name=="" || clas=="" || section=="" || gen==""){
+        return res.status(409).json({
             message:"ALl field is required"
         })
     }
@@ -36,7 +36,7 @@ function postSingleRecord(req,res){
         connection.query(sql,(err,results,fields)=>{
             if(err){
                 connection.end();
-                return res.status(201).json({
+                return res.status(500).json({
                     error : err
                 })
             }
@@ -61,7 +61,7 @@ function getSingleStudentRecord(req,res){
             }
             console.log(fields);
             if(results.length<=0){
-                return res.status(200).json({
+                return res.status(400).json({
                     Message:"Something wrong with your roll number"
                 })
                 
